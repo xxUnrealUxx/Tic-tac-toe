@@ -77,6 +77,15 @@ public class Board{
         return Symbol.EMPTY;
     }
 
+    /**
+     * Resets the board to all empty
+     */
+    public void clear(){
+        for(int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+                cells[i][j] = Symbol.EMPTY;
+    }
+
     public Symbol getCell(int row, int column){
         try{
             validArguments(row, column);
@@ -84,5 +93,9 @@ public class Board{
         } catch (IllegalArgumentException e){
             return null;
         }
+    }
+
+    public Symbol[][] getCells(){
+        return cells;
     }
 }
