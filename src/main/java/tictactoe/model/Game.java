@@ -4,6 +4,7 @@ import java.util.*;
 public class Game{
     private final Board board;
     private final Player[] players;
+    private int counter = 0;
 
     public Game(Player playerX, Player playerO){
         this.board = new Board();
@@ -12,37 +13,34 @@ public class Game{
         this.players[1] = playerO;
     }
 
-    /**
-     * The whole mechanism of the game
-     * @return winning player
-     */
-    public Player play() {
-        Scanner s = new Scanner(System.in);
-        Player winner = null;
-        int row;
-        int column;
+    public boolean makeMove(int row, int column){
+        if(!board.placeMove(row, column, players[counter%2].getSymbol())) return false;
+        counter++;
+        return true;
+    }
 
-        for(int i = 0; i < 9; i++){
+    public Player getWinner(){
+        return Player.getSymbolPlayer(players, board.checkWinner());
+    }
 
-            System.out.println(players[i%2].getName() + "'s turn");
-            System.out.println("Choose row");
-            row = s.nextInt();
-            System.out.println("Choose column");
-            column = s.nextInt();
+    public Player getCurrentPlayer(){
+        return players[counter%2];
+    }
 
-            while(!board.placeMove(row, column, players[i%2].getSymbol())){
-                System.out.println(players[i%2].getName() + "'s turn");
-                System.out.println("Choose row");
-                row = s.nextInt();
-                System.out.println("Choose column");
-                column = s.nextInt();
-            }
+    public Player[] getPlayers(){
+        return players;
+    }
 
-            winner = Player.getSymbolPlayer(players, board.checkWinner());
-            if(winner != null) break;
-        }
+    public Board getBoard(){
+        return board;
+    }
 
+    public boolean iGameOver(){
+        return counter > 8;
+    }
+
+    public void reset(){
+        counter = 0;
         board.clear();
-        return winner;
     }
 }
