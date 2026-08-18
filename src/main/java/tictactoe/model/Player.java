@@ -2,8 +2,8 @@ package tictactoe.model;
 import java.util.*;
 
 public class Player{
-     private final Symbol symbol;
-     private final String name;
+     private Symbol symbol;
+     private String name;
 
      public Player(String name, Symbol symbol){
          this.name = name;
@@ -31,8 +31,15 @@ public class Player{
         return name;
     }
 
+    public void setName(String name) {this.name = name;}
+
     public Symbol getSymbol() {
         return symbol;
+    }
+
+    public void toggleSymbol(){
+        if(symbol == Symbol.X) symbol = Symbol.O;
+        else symbol = Symbol.X;
     }
 
     @Override
