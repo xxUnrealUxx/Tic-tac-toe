@@ -113,7 +113,7 @@ public class TerminalUI{
      * Prints draw
      */
     public void announceDraw(){
-        System.out.println();
+        System.out.println("The game ended in a draw!");
     }
 
     /**
@@ -121,5 +121,12 @@ public class TerminalUI{
      */
     public void clearNewLine(){
         scanner.nextLine();
+    }
+
+    /**
+     * Prints a message that tells the user to choose something else
+     */
+    public void invalidChoice(){
+        System.out.println("Please choose a valid option!");
     }
 }
