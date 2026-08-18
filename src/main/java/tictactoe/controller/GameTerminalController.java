@@ -12,6 +12,9 @@ public class GameTerminalController {
         this.ui = ui;
     }
 
+    /**
+     * Prints the main menu and lets the user choose
+     */
     public void play(){
         while(true) {
             int choice = ui.menuChoice();
@@ -31,10 +34,18 @@ public class GameTerminalController {
                 case 3 -> {
                     return;
                 }
+
+                default -> {
+                    ui.invalidChoice();
+                    break;
+                }
             }
         }
     }
 
+    /**
+     * Prints the possible options and lets the user choose whether to change the name of a player
+     */
     public void changeName(){
         while(true) {
             Player player1 = game.getPlayers()[0];
@@ -55,12 +66,16 @@ public class GameTerminalController {
                 case 3 -> {
                     return;
                 }
+                default -> {
+                    ui.invalidChoice();
+                    break;
+                }
             }
         }
     }
 
     /**
-     * The whole mechanism of the game
+     * Handles the flow of a single ticktacktoe game round
      */
     public void round() {
         while(!game.iGameOver()){
