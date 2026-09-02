@@ -4,10 +4,12 @@ import java.util.*;
 public class Player{
      private Symbol symbol;
      private String name;
+     private int score;
 
      public Player(String name, Symbol symbol){
          this.name = name;
          this.symbol = symbol;
+         score = 0;
      }
 
     /**
@@ -27,6 +29,10 @@ public class Player{
          return null;
     }
 
+    public void hasWon(){score++;}
+
+    public int getScore(){return score;}
+
     public String getName() {
         return name;
     }
@@ -35,11 +41,6 @@ public class Player{
 
     public Symbol getSymbol() {
         return symbol;
-    }
-
-    public void toggleSymbol(){
-        if(symbol == Symbol.X) symbol = Symbol.O;
-        else symbol = Symbol.X;
     }
 
     @Override
