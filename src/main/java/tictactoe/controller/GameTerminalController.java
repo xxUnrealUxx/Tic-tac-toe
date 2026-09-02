@@ -78,7 +78,7 @@ public class GameTerminalController {
      * Handles the flow of a single ticktacktoe game round
      */
     public void round() {
-        while(!game.iGameOver()){
+        while(!game.isGameOver()){
             Player winner = null;
             ui.clearScreen();
             ui.printBoard(game.getBoard());
